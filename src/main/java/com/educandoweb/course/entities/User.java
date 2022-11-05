@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +28,8 @@ public class User implements Serializable{
 	private String phone;
 	private String password;
 	
-	// esse um para muitos, do outro lado está MAPEADO POR quem? cliente_id
+	@JsonIgnore // para resolver o problema do loop
+	// esse um para muitos, do outro lado está MAPEADO POR quem? pelo client
 	@OneToMany(mappedBy="client")
 	private List<Order> orders = new ArrayList<>();		// é uma lista porque o usuário pode ter vários pedidos
 	

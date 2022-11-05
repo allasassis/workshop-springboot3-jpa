@@ -9,28 +9,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.educandoweb.course.entities.User;
-import com.educandoweb.course.services.UserService;
+import com.educandoweb.course.entities.Order;
+import com.educandoweb.course.services.OrderService;
 
-// esse pacote disponibiliza recursos web para a classe usar
+// esse pacote disponibiliza recursos web para a classe Order
 @RestController
-@RequestMapping(value = "/users")
-public class UserResource {
+@RequestMapping(value = "/orders")
+public class OrderResource {
 
 	@Autowired
-	private UserService service;
+	private OrderService service;
 	
 	// RespondeEntity é um tipo especifico do Spring para retornar respostas de requisições web
 	@GetMapping
-	public ResponseEntity<List<User>> findAll() {
-		// User u = new User(1L, "Maria", "maria@gmail.com", "9492932", "12345");
-		List<User> list = service.findAll();
+	public ResponseEntity<List<Order>> findAll() {
+		List<Order> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value= "/{id}") 				// isso indica que a requisição vai aceitar um ID dentro da URL
-	public ResponseEntity<User> findById(@PathVariable Long id) {
-		User obj = service.findById(id);
+	public ResponseEntity<Order> findById(@PathVariable Long id) {
+		Order obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 }

@@ -13,11 +13,12 @@ import org.springframework.context.annotation.Profile;
 import com.educandoweb.course.entities.Category;
 import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.OrderItem;
+import com.educandoweb.course.entities.Payment;
 import com.educandoweb.course.entities.Product;
 import com.educandoweb.course.entities.User;
 import com.educandoweb.course.entities.enums.OrderStatus;
 import com.educandoweb.course.repositories.CategoryRepository;
-import com.educandoweb.course.repositories.OrdemItemRepository;
+import com.educandoweb.course.repositories.OrdertemRepository;
 import com.educandoweb.course.repositories.OrderRepository;
 import com.educandoweb.course.repositories.ProductRepository;
 import com.educandoweb.course.repositories.UserRepository;
@@ -39,7 +40,7 @@ public class TestConfig implements CommandLineRunner{
 	private ProductRepository productRepository;
 	
 	@Autowired
-	private OrdemItemRepository ordemItemRepository;
+	private OrdertemRepository orderItemRepository;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -81,7 +82,11 @@ public class TestConfig implements CommandLineRunner{
 		OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		
-		ordemItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+		
+		Payment pay1  = new Payment(null, Instant.parse("2022-06-20T21:32:07Z"), o1);
+		o1.setPayment(pay1); // quando o objeto é dependente, não iremos usar um repository próprio
+		orderRepository.save(o1);
 	}
 	
 	

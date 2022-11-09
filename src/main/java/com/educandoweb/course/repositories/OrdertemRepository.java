@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.educandoweb.course.entities.OrderItem;
 
 @Repository // @Repository não é necessário porque a classe já está herdanddo do JpaRepository
-public interface OrdemItemRepository extends JpaRepository<OrderItem, Long>{ // repositories geralmente são interfaces
+public interface OrdertemRepository extends JpaRepository<OrderItem, Long>{ // repositories geralmente são interfaces
 	
 	
 

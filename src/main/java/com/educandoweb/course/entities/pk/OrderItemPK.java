@@ -33,12 +33,10 @@ public class OrderItemPK {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(order, product);
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

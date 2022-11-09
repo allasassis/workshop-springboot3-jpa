@@ -61,6 +61,15 @@ public class TestConfig implements CommandLineRunner{
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
 		userRepository.saveAll(Arrays.asList(u1, u2));		// aqui estamos salvando tudo na classe userRepository, que é a classe q acessa o banco
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+		
+		p1.getCategories().add(cat2); // aqui estamos adicionando uma nova categoria para os produtos
+		p2.getCategories().add(cat1);
+		p2.getCategories().add(cat3);
+		p3.getCategories().add(cat3);
+		p4.getCategories().add(cat3);
+		p5.getCategories().add(cat2);
+		
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 	}
 	
 	

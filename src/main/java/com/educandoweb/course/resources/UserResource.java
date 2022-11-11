@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +33,7 @@ public class UserResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@GetMapping(value= "/{id}") 				// isso indica que a requisição vai aceitar um ID dentro da URL
+	@GetMapping(value= "/{id}") 		// isso indica que a requisição vai aceitar um ID dentro da URL
 	public ResponseEntity<User> findById(@PathVariable Long id) {
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
@@ -47,4 +48,9 @@ public class UserResource {
 		return ResponseEntity.created(uri).body(obj);
 	}
 	
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+		service.delete(id); //noContent é usado para quando não tem conteúdo, ai ele retorna o código 204
+		return ResponseEntity.noContent().build(); 
+	}
 }

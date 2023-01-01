@@ -5,7 +5,7 @@
 
 Web services com Spring Boot e JPA / Hibernate é uma aplicação java web com banco de dados construída durante o curso Java do professor Nélio Alves, da [DevSuperior](https://devsuperior.com "Site da DevSuperior").
 
-A aplicação consiste em uma aplicação que, usando Springboot 3, JPA e Hibernate, é possível atualizar, deletar e buscar dados no banco de dados, por uma aplicação Spring/Java.
+Consiste em uma aplicação que, usando Springboot 3, JPA e Hibernate, é possível atualizar, deletar e buscar dados no banco de dados, por uma aplicação Spring/Java.
 
 ## Modelo conceitual
 ![Modelo Conceitual](https://user-images.githubusercontent.com/88514585/201484631-6b5d6d07-0bae-43f3-8e3e-bc5e95800b85.png)
